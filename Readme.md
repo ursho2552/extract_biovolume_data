@@ -89,14 +89,14 @@ The script generates a map to visualize the station locations and compare them w
 
   -  MATLAB
   -  Datasets:
-    - Mergedbase.mat and MergedbaseC.mat
-    - Supplementary files (table SI-4.xlsx, TARA_locs_date.csv)
+        - Mergedbase.mat and MergedbaseC.mat
+        - Supplementary files (table SI-4.xlsx, TARA_locs_date.csv)
   -  Coastlines data for visualization
 
 ### Supplementary Functions
 
-    get_tot_values(): Extracts total values from the Mergedbase and MergedbaseC datasets.
-    importfile(): Imports data from CSV files.
-    get_supplementary_information(): Loads supplementary data from the Excel file.
-    findLargestSubstring(): Matches taxa names with the supplementary table.
-    get_stations(): Extracts station information from metaplankton datasets.
+   - get_tot_values(): Extracts total values from the Mergedbase and MergedbaseC datasets.
+   - importfile(): Imports data from CSV files.
+   - get_supplementary_information(): Loads supplementary data from the Excel file.
+   - findLargestSubstring(): Matches taxa names with the supplementary table.
+   - get_stations(): Extracts station information from metaplankton datasets.
