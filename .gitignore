@@ -1,0 +1,6 @@
+*.txt
+*.ipynb
+*.csv
+Biovolume_data
+!Biovolume_data/.gitkeep
+
