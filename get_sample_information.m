@@ -1,5 +1,41 @@
 function struct_information = get_sample_information(database)
-    
+% This function extracts various metadata from a given sample in the `database`.
+% It searches for key fields such as `SampleID`, `Date`, `Time`, `Latitude`,
+% `Longitude`, `Depth`, `Volume`, and other relevant information. The function
+% handles missing data and different naming conventions for fields, ensuring that
+% the relevant information is collected if available. It also formats the date
+% and time into an `event_date` string.
+%
+% Inputs:
+%   - database (struct): A structured array representing a sample with potential fields for
+%     sample metadata like date, time, location, depth, and volume.
+%
+% Outputs:
+%   - struct_information (struct): A structure containing the extracted metadata with
+%     the following fields:
+%       - SampleID (string): The identifier for the sample.
+%       - year (double): Year of the event (if available).
+%       - month (double): Month of the event (if available).
+%       - day (double): Day of the event (if available).
+%       - hour (double): Hour of the event (if available).
+%       - minutes (double): Minutes of the event (if available).
+%       - seconds (double): Seconds of the event (if available).
+%       - event_date (string): ISO 8601 formatted date and time string (or 'NaN' if missing).
+%       - latitude (double): Latitude of the sample location.
+%       - longitude (double): Longitude of the sample location.
+%       - depth (double): Depth of the sample (if available).
+%       - Zmax (double): Maximum depth recorded (if available).
+%       - Zmin (double): Minimum depth recorded (if available).
+%       - volume (double): Volume of the sample (if available).
+%       - Netmesh (double): Net mesh size used (if available).
+%       - Netsurf (double): Net surface area used (if available).
+%
+% Example:
+%   sample_info = get_sample_information(Mergedbase(1));
+%
+% In this example, the function extracts the metadata from the first sample
+% in the `Mergedbase` dataset and returns it in a structured format.
+
     FIELDS = string(["SampleID"; "Date"; "time"; "Latitude"; "Longitude";...
         "depth"; "Depth"; "Zmax"; "Zmin"; "vol"; "Vol"; "Netsurf"; "Netmesh"; "SampleBarcode"]);
     

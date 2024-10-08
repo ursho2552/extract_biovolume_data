@@ -1,5 +1,48 @@
 function [all_tot_values, all_tot_group] = get_tot_values(database, database_carbon, instrument_name)
-    
+% This function extracts total abundance (Ab), biovolume (Bv), and carbon-related 
+% biovolume values from two databases for a specific instrument. It retrieves data 
+% from stations associated with the specified `instrument_name`, and for each station, 
+% it collects relevant information such as latitude, longitude, depth, and event details.
+% The extracted data is structured into arrays for further analysis, with separate arrays 
+% for total values and groups.
+%
+% Inputs:
+%   - database (struct): The primary dataset, where the total abundance and biovolume (Ab, Bv) 
+%     data are stored for each station and instrument.
+%   - database_carbon (struct): A dataset similar to `database`, but with carbon-converted biovolume values.
+%   - instrument_name (string): The name of the instrument for which the data is being extracted.
+%
+% Outputs:
+%   - all_tot_values (matrix): A matrix containing extracted values for each station and sample, 
+%     with columns representing:
+%       - Station number
+%       - Latitude
+%       - Longitude
+%       - Year, Month, Day of the event
+%       - Depth, Zmax, Zmin (depth information)
+%       - Sample volume, Net mesh, Net surface area
+%       - Abundance (Ab)
+%       - Biovolume (Bv)
+%       - Carbon biovolume (Bv_carbon)
+%   - all_tot_group (string array): An array containing metadata for each entry, including:
+%       - Zoo group name
+%       - Event date (formatted as a string)
+%       - Instrument name
+%       - Sample ID
+%
+% Example:
+%   [all_tot_values, all_tot_group] = get_tot_values(Mergedbase, MergedbaseC, 'UVP');
+%
+% In this example, the function extracts the total abundance, biovolume, and carbon 
+% biovolume values for stations using the 'UVP' instrument from the `Mergedbase` and 
+% `MergedbaseC` datasets. It returns the values and associated group information.
+%
+% Notes:
+% - The function handles different instruments by switching the method of extracting `tot_values`.
+% - If `Ab` or `Bv` values are not available for a sample, the function skips those entries.
+% - Metadata such as `SampleID`, latitude, longitude, and event date is extracted using 
+%   the `get_sample_information` function.
+
     FIELDS = {'Ab'; 'Bv'}; 
     [data_stations, stations] = get_stations(database, instrument_name);
     [data_stations_carbon, ~] = get_stations(database_carbon, instrument_name);
