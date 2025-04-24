@@ -97,6 +97,7 @@ The script generates a map to visualize the station locations and compare them w
 
    - get_tot_values(): Extracts total values from the Mergedbase and MergedbaseC datasets.
    - importfile(): Imports data from CSV files.
+   - importfile_TARAregevents(): function used to import the TARA_reg_events.csv file
    - get_supplementary_information(): Loads supplementary data from the Excel file.
    - findLargestSubstring(): Matches taxa names with the supplementary table.
    - get_stations(): Extracts station information from metaplankton datasets.
