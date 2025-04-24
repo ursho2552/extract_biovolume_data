@@ -170,7 +170,7 @@ occurrenceID = SampleID + '_' + Latitude + '_' + Longitude + '_' + Event_date + 
 
 TARAregevents_file = '/net/kryo/work/ursho/PhD/Projects/BlueCloud/Imaging_data/Biovolume_data/TARA_reg_events.csv';
 TARAregevents = importfile_TARAregevents(TARAregevents_file, 2, 3265);
-%%
+
 % Identify missasigned measurements
 [C, ia, ic] = unique([TARA_station, Latitude, Longitude, Instrument], 'rows');
 instruments = C(:,4);
